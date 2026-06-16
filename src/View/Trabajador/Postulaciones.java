@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package View.Trabajador;
 
 
@@ -12,11 +9,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.DefaultCellEditor;
 
-public class Postulaciones extends JFrame {
+public class Postulaciones extends JPanel {
 
-    // ==========================
+    // ==========================================
     // COLORES WORKBRIDGE
-    // ==========================
+    // ==========================================
     private final Color AZUL_OSCURO
             = new Color(54, 73, 125);
 
@@ -24,555 +21,33 @@ public class Postulaciones extends JFrame {
             = new Color(171, 132, 187);
 
     private final Color CREMA
-            = new Color(221, 216, 210);
+            = new Color(212, 205, 197);
 
     private final Color FONDO
-            = new Color(240, 240, 240);
+            = new Color(245, 245, 245);
 
-    // ==========================
-    // COMPONENTES
-    // ==========================
-    private JPanel panelSidebar;
-    private JPanel panelContenido;
+  
+    // ==========================================
+    // CONSTRUCTOR
+    // ==========================================
+public Postulaciones() {
 
-    public Postulaciones() {
-
-        configurarVentana();
-        iniciarComponentes();
-    }
-private void configurarVentana() {
-
-    setTitle("WorkBridge - Mis Postulaciones");
-
-    setSize(1400, 800);
-
-    setDefaultCloseOperation(
-            JFrame.EXIT_ON_CLOSE
+    setLayout(
+            new BorderLayout()
     );
 
-    setLocationRelativeTo(null);
-
-    setResizable(false);
-
-    setLayout(new BorderLayout());
-
-    getContentPane().setBackground(
-            FONDO
-    );
-}
-
-
-    private void iniciarComponentes() {
-
-        // ==========================
-        // PANEL PRINCIPAL
-        // ==========================
-        JPanel panelPrincipal
-                = new JPanel(new BorderLayout());
-
-        // ==========================
-        // SIDEBAR IZQUIERDO
-        // ==========================
-        panelSidebar = new JPanel();
-
-        panelSidebar.setBackground(
-                AZUL_OSCURO
-        );
-
-        panelSidebar.setPreferredSize(
-                new Dimension(270, 800)
-        );
-
-        panelSidebar.setLayout(
-                new BoxLayout(
-                        panelSidebar,
-                        BoxLayout.Y_AXIS
-                )
-        );
-
-        panelSidebar.setAlignmentX(
-                Component.LEFT_ALIGNMENT
-        );
-
-        panelSidebar.setBorder(
-                new EmptyBorder(
-                        25,
-                        5,
-                        25,
-                        10
-                )
-        );
-
-        // ==========================
-        // LOGO
-        // ==========================
-        JLabel lblLogo = new JLabel(
-                "<html><center>"
-                + "<h1 style='color:white'>Work<br>Bridge</h1>"
-                + "<span style='color:white'>"
-                + "CONECTAMOS TALENTO"
-                + "</span>"
-                + "</center></html>"
-        );
-
-        lblLogo.setAlignmentX(
-                Component.CENTER_ALIGNMENT
-        );
-
-        panelSidebar.add(lblLogo);
-
-        panelSidebar.add(
-                Box.createRigidArea(
-                        new Dimension(0, 30)
-                )
-        );
-
-        // ==========================
-        // MENÚ
-        // ==========================
-        panelSidebar.add(crearMenu("🏠 Inicio"));
-        panelSidebar.add(crearMenu("🏢 Mi empresa"));
-        panelSidebar.add(crearMenu("📄 Mis Vacantes"));
-
-        panelSidebar.add(
-                crearMenuSeleccionado(
-                        "📑 Postulaciones"
-                )
-        );
-
-        panelSidebar.add(crearMenu("📅 Entrevistas"));
-        panelSidebar.add(crearMenu("💬 Comunicaciones"));
-        panelSidebar.add(crearMenu("🔔 Notificaciones"));
-
-        panelSidebar.add(
-                Box.createVerticalGlue()
-        );
-
-        panelSidebar.add(
-                crearMenu("⚙ Configuración")
-        );
-
-        // ==========================
-        // USUARIO ABAJO
-        // ==========================
-        JPanel panelUser
-                = new JPanel(
-                        new FlowLayout(
-                                FlowLayout.LEFT
-                        )
-                );
-
-        panelUser.setOpaque(false);
-
-        JLabel lblUser
-                = new JLabel(
-                        "👤 TechCorp S.A."
-                );
-
-        lblUser.setForeground(
-                Color.WHITE
-        );
-
-        lblUser.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        20
-                )
-        );
-
-        panelUser.add(lblUser);
-
-        panelSidebar.add(panelUser);
-
-        // ==========================
-        // PANEL CONTENIDO
-        // ==========================
-        panelContenido
-                = new JPanel();
-
-        panelContenido.setBackground(
-                Color.WHITE
-        );
-
-        panelContenido.setLayout(
-                new BorderLayout()
-        );     
-    panelPrincipal.add(
-            panelSidebar,
-            BorderLayout.WEST
+    setBackground(
+            Color.WHITE
     );
 
-    panelPrincipal.add(
-            panelContenido,
-            BorderLayout.CENTER
-    );
-
-    crearHeader();
     crearTablaPostulaciones();
-
-    add(panelPrincipal);
-    }
-
-    // ==========================
-    // MENÚ NORMAL
-    // ==========================
-    // ==========================
-    // MENÚ SELECCIONADO
-    // ==========================
-    private JButton crearMenuSeleccionado(
-            String texto
-    ) {
-
-        JButton btn
-                = crearMenu(texto);
-
-        btn.setBackground(
-                MORADO
-        );
-
-        return btn;
-    }
-
-    public static void main(
-            String[] args
-    ) {
-
-        SwingUtilities.invokeLater(() -> {
-
-            new Postulaciones()
-                    .setVisible(true);
-        });
-    }
-
-    private void crearHeader() {
-
-        // ==========================
-        // PANEL GENERAL SUPERIOR
-        // ==========================
-        JPanel panelTop
-                = new JPanel();
-
-        panelTop.setLayout(
-                new BorderLayout()
-        );
-
-        panelTop.setBackground(
-                Color.WHITE
-        );
-
-        panelTop.setBorder(
-                new EmptyBorder(
-                        20,
-                        25,
-                        20,
-                        25
-                )
-        );
-
-        // ==========================
-        // PANEL IZQUIERDO
-        // ==========================
-        JPanel panelTitulo
-                = new JPanel();
-
-        panelTitulo.setOpaque(false);
-
-        panelTitulo.setLayout(
-                new BoxLayout(
-                        panelTitulo,
-                        BoxLayout.Y_AXIS
-                )
-        );
-
-        JLabel lblTitulo
-                = new JLabel(
-                        "Mis Postulaciones"
-                );
-
-        lblTitulo.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        30
-                )
-        );
-
-        lblTitulo.setForeground(
-                AZUL_OSCURO
-        );
-
-        JLabel lblFecha
-                = new JLabel(
-                        "Domingo, 7 de junio de 2026"
-                );
-
-        lblFecha.setForeground(
-                Color.GRAY
-        );
-
-        lblFecha.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.PLAIN,
-                        15
-                )
-        );
-
-        panelTitulo.add(lblTitulo);
-        panelTitulo.add(lblFecha);
-
-        // ==========================
-        // PANEL DERECHO
-        // ==========================
-        JPanel panelDerecha
-                = new JPanel(
-                        new FlowLayout(
-                                FlowLayout.RIGHT,
-                                15,
-                                5
-                        )
-                );
-
-        panelDerecha.setOpaque(false);
-
-        // ==========================
-        // BUSCADOR
-        // ==========================
-        JTextField txtBuscar
-                = new JTextField(
-                        "Buscar candidatos"
-                );
-
-        txtBuscar.setPreferredSize(
-                new Dimension(
-                        250,
-                        38
-                )
-        );
-
-        txtBuscar.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.PLAIN,
-                        14
-                )
-        );
-
-        txtBuscar.setBorder(
-                BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(
-                                new Color(
-                                        210,
-                                        210,
-                                        210
-                                )
-                        ),
-                        BorderFactory.createEmptyBorder(
-                                5,
-                                12,
-                                5,
-                                12
-                        )
-                )
-        );
-
-        // ==========================
-        // ICONOS
-        // ==========================
-        JButton btnNoti
-                = new JButton("🔔");
-
-        JButton btnPerfil
-                = new JButton("👤");
-
-        estilizarIcono(btnNoti);
-        estilizarIcono(btnPerfil);
-
-        panelDerecha.add(txtBuscar);
-        panelDerecha.add(btnNoti);
-        panelDerecha.add(btnPerfil);
-
-        // ==========================
-        // AGREGAR ARRIBA
-        // ==========================
-        panelTop.add(
-                panelTitulo,
-                BorderLayout.WEST
-        );
-
-        panelTop.add(
-                panelDerecha,
-                BorderLayout.EAST
-        );
-
-        // ==========================
-        // CARDS
-        // ==========================
-        JPanel panelCards
-                = new JPanel(
-                        new GridLayout(
-                                1,
-                                5,
-                                20,
-                                0
-                        )
-                );
-
-        panelCards.setBackground(
-                Color.WHITE
-        );
-
-        panelCards.setBorder(
-                new EmptyBorder(
-                        10,
-                        25,
-                        15,
-                        25
-                )
-        );
-
-        panelCards.add(
-                crearCard(
-                        "5",
-                        "Total postulaciones"
-                )
-        );
-
-        panelCards.add(
-                crearCard(
-                        "2",
-                        "En revisión"
-                )
-        );
-
-        panelCards.add(
-                crearCard(
-                        "3",
-                        "Entrevista"
-                )
-        );
-
-        panelCards.add(
-                crearCard(
-                        "1",
-                        "Aceptada"
-                )
-        );
-
-        panelCards.add(
-                crearCard(
-                        "1",
-                        "Rechazada"
-                )
-        );
-
-        // ==========================
-        // PANEL NORTE
-        // ==========================
-        JPanel panelNorte
-                = new JPanel(
-                        new BorderLayout()
-                );
-
-        panelNorte.setBackground(
-                new Color(212, 205, 197)
-        );
-
-        panelNorte.add(
-                panelTop,
-                BorderLayout.NORTH
-        );
-
-        panelNorte.add(
-                panelCards,
-                BorderLayout.SOUTH
-        );
-
-        panelContenido.add(
-                panelNorte,
-                BorderLayout.NORTH
-        );
-    }
-
-    private void estilizarIcono(
-            JButton boton
-    ) {
-
-        boton.setFocusPainted(false);
-
-        boton.setBorderPainted(false);
-
-        boton.setContentAreaFilled(false);
-
-        boton.setFont(
-                new Font(
-                        "Segoe UI Emoji",
-                        Font.PLAIN,
-                        22
-                )
-        );
-
-        boton.setCursor(
-                new Cursor(
-                        Cursor.HAND_CURSOR
-                )
-        );
-    }
-
-    private JButton crearTab(
-            String texto,
-            boolean activo
-    ) {
-
-        JButton btn
-                = new JButton(texto);
-
-        btn.setFocusPainted(false);
-
-        btn.setBorderPainted(false);
-
-        btn.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        15
-                )
-        );
-
-        btn.setPreferredSize(
-                new Dimension(
-                        140,
-                        40
-                )
-        );
-
-        if (activo) {
-
-            btn.setBackground(
-                    MORADO
-            );
-
-            btn.setForeground(
-                    Color.WHITE
-            );
-
-        } else {
-
-            btn.setBackground(
-                    AZUL_OSCURO
-            );
-
-            btn.setForeground(
-                    Color.WHITE
-            );
-        }
-
-        return btn;
-    }
+}
 
     private void crearTablaPostulaciones() {
 
+        // ==========================================
+        // PANEL CENTRAL
+        // ==========================================
         JPanel panelCentro
                 = new JPanel(
                         new BorderLayout()
@@ -585,15 +60,15 @@ private void configurarVentana() {
         panelCentro.setBorder(
                 new EmptyBorder(
                         10,
+                        28,
                         25,
-                        25,
-                        25
+                        28
                 )
         );
 
-        // ==========================
-        // TABS
-        // ==========================
+        // ==========================================
+        // PANEL TABS
+        // ==========================================
         JPanel panelTabs
                 = new JPanel(
                         new FlowLayout(
@@ -642,9 +117,9 @@ private void configurarVentana() {
                 )
         );
 
-        // ==========================
-        // TABLA
-        // ==========================
+        // ==========================================
+        // DATOS TABLA
+        // ==========================================
         String[] columnas = {
             "#",
             "Vacante",
@@ -696,46 +171,157 @@ private void configurarVentana() {
                 "Ver detalles"
             }
         };
-        
+
         JTable tabla
                 = new JTable(
                         datos,
                         columnas
                 );
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tabla.setShowGrid(true);
+tabla.setGridColor(AZUL_OSCURO);
+tabla.setIntercellSpacing(new Dimension(0, 0));
+        // ==========================================
+        // ESTILO TABLA
+        // ==========================================
+class EstadoRenderer extends BaseRenderer {
 
-        tabla.setRowHeight(42);
+    @Override
+    public Component getTableCellRendererComponent(
+            JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int column
+    ) {
 
-        tabla.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.PLAIN,
-                        14
-                )
+        JLabel lbl = (JLabel) super.getTableCellRendererComponent(
+                table, value, isSelected, hasFocus, row, column
         );
 
-        tabla.setShowVerticalLines(true);
-        tabla.setShowHorizontalLines(true);
+        lbl.setHorizontalAlignment(SwingConstants.CENTER);
 
+        lbl.setOpaque(true);
+        lbl.setBackground(Color.WHITE); // 👈 CLAVE: evita “manchas”
+
+        String estado = value.toString();
+
+        if (estado.equals("En revisión")) {
+            lbl.setForeground(new Color(52, 120, 246));
+        } else if (estado.equals("Entrevista")) {
+            lbl.setForeground(new Color(145, 90, 220));
+        } else if (estado.equals("Aceptada")) {
+            lbl.setForeground(new Color(25, 165, 70));
+        } else {
+            lbl.setForeground(new Color(220, 50, 50));
+        }
+
+        return lbl;
+    }
+}
+// ==========================================
+// LINEAS DE TABLA
+// ==========================================
         tabla.setGridColor(
                 new Color(
-                        220,
-                        220,
-                        220
+                        195,
+                        195,
+                        195
                 )
         );
 
-        tabla.setSelectionBackground(
-                new Color(
-                        235,
-                        235,
-                        255
-                )
+        tabla.setShowHorizontalLines(
+                true
         );
 
-        // ==========================
-        // HEADER
-        // ==========================
-        tabla.getTableHeader().setFont(
+        tabla.setRowSelectionAllowed(true);
+tabla.setCellSelectionEnabled(false);
+tabla.setFocusable(false);
+// GROSOR ENTRE CELDAS
+        tabla.setIntercellSpacing(new Dimension(0, 0));
+
+// COLOR FONDO DE TABLA
+        tabla.setBackground(
+                Color.WHITE
+        );
+
+// MARGEN INTERNO
+        tabla.setRowHeight(
+        60
+);
+
+tabla.setRowMargin(
+        8
+);
+
+        tabla.setShowHorizontalLines(
+                true
+        );
+
+        tabla.setShowVerticalLines(
+                true
+        );
+
+
+
+        tabla.setFillsViewportHeight(
+                true
+        );
+
+        // ==========================================
+        // HEADER TABLA
+        // ==========================================
+
+                tabla.getTableHeader()
+                .setReorderingAllowed(
+                        false
+                );
+        tabla.getTableHeader()
+                .setPreferredSize(
+                        new Dimension(
+                                0,
+                                52
+                        )
+                );
+tabla.getTableHeader().setDefaultRenderer(
+        new DefaultTableCellRenderer() {
+
+    @Override
+    public Component getTableCellRendererComponent(
+            JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int column
+    ) {
+
+        JLabel lbl =
+                (JLabel) super.getTableCellRendererComponent(
+                        table,
+                        value,
+                        isSelected,
+                        hasFocus,
+                        row,
+                        column
+                );
+
+        lbl.setOpaque(true);
+
+lbl.setBackground(
+        new Color(
+                179,
+                201,
+                214
+        )
+);
+
+        lbl.setForeground(
+        AZUL_OSCURO
+);
+
+        lbl.setFont(
                 new Font(
                         "Segoe UI",
                         Font.BOLD,
@@ -743,39 +329,31 @@ private void configurarVentana() {
                 )
         );
 
-        tabla.getTableHeader().setBackground(
-                new Color(
-                        210,
-                        225,
-                        240
-                )
+        lbl.setHorizontalAlignment(
+                SwingConstants.LEFT
         );
 
-        tabla.getTableHeader().setForeground(
-                Color.BLACK
-        );
+        // LÍNEAS VISIBLES
+        lbl.setBorder(BorderFactory.createMatteBorder(
+        0, 0, 2, 2,
+        AZUL_OSCURO
+));
 
-        tabla.getTableHeader().setPreferredSize(
-                new Dimension(
-                        0,
-                        40
-                )
-        );
-
-        // ==========================
+        return lbl;
+    }
+});
+        // ==========================================
         // RENDER ESTADOS
-        // ==========================
+        // ==========================================
         tabla.getColumnModel()
                 .getColumn(4)
                 .setCellRenderer(
                         new EstadoRenderer()
                 );
 
-        // ==========================
-        // BOTON TABLA
-        // ==========================
-        
-        
+        // ==========================================
+        // BOTÓN MODERNO
+        // ==========================================
         tabla.getColumnModel()
                 .getColumn(5)
                 .setCellRenderer(
@@ -790,244 +368,121 @@ private void configurarVentana() {
                         )
                 );
 
-        // ancho columnas
+        // ==========================================
+        // ANCHOS
+        // ==========================================
         tabla.getColumnModel()
                 .getColumn(0)
-                .setPreferredWidth(40);
+                .setPreferredWidth(
+                        40
+                );
+
+        tabla.getColumnModel()
+                .getColumn(1)
+                .setPreferredWidth(
+                        260
+                );
 
         tabla.getColumnModel()
                 .getColumn(5)
-                .setPreferredWidth(140);
+                .setPreferredWidth(
+                        150
+                );
 
+        // ==========================================
+        // SCROLL
+        // ==========================================
         JScrollPane scroll
-                = new JScrollPane(tabla);
-
-        scroll.setBorder(
-                BorderFactory.createLineBorder(
-                        new Color(
-                                210,
-                                210,
-                                210
-                        )
-                )
-        );
-
-        panelCentro.add(
-                panelTabs,
-                BorderLayout.NORTH
-        );
-
-        panelCentro.add(
-                scroll,
-                BorderLayout.CENTER
-        );
-
-        panelContenido.add(
-                panelCentro,
-                BorderLayout.CENTER
-        );
-    }
-
-    class EstadoRenderer
-            extends DefaultTableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(
-                JTable table,
-                Object value,
-                boolean isSelected,
-                boolean hasFocus,
-                int row,
-                int column
-        ) {
-
-            JLabel lbl
-                    = (JLabel) super
-                            .getTableCellRendererComponent(
-                                    table,
-                                    value,
-                                    isSelected,
-                                    hasFocus,
-                                    row,
-                                    column
-                            );
-
-            lbl.setHorizontalAlignment(
-                    SwingConstants.CENTER
-            );
-
-            String estado
-                    = value.toString();
-
-            if (estado.equals("En revisión")) {
-
-                lbl.setForeground(
-                        new Color(
-                                52,
-                                120,
-                                246
-                        )
+                = new JScrollPane(
+                        tabla
                 );
-            } else if (estado.equals("Entrevista")) {
+scroll.setBorder(
+    BorderFactory.createLineBorder(
+            new Color(210, 210, 210),
+            1
+    )
+);
 
-                lbl.setForeground(
-                        new Color(
-                                145,
-                                90,
-                                220
-                        )
+        scroll.getViewport()
+                .setBackground(
+                        Color.WHITE
                 );
-            } else if (estado.equals("Aceptada")) {
 
-                lbl.setForeground(
-                        new Color(
-                                30,
-                                170,
-                                70
-                        )
+        // ==========================================
+        // PANEL TABLA
+        // ==========================================
+        JPanel panelTabla
+                = new RoundedPanel(
+                        30
                 );
-            } else {
 
-                lbl.setForeground(
-                        new Color(
-                                220,
-                                50,
-                                50
-                        )
-                );
-            }
-
-            return lbl;
-        }
-    }
-
-    private JPanel crearCard(
-            String numero,
-            String texto
-    ) {
-
-        RoundedPanel panel
-                = new RoundedPanel(25);
-
-        panel.setLayout(
-                new BoxLayout(
-                        panel,
-                        BoxLayout.Y_AXIS
-                )
+        panelTabla.setLayout(
+                new BorderLayout()
         );
 
-        panel.setBackground(
-        new Color(212, 205, 197)
+        panelTabla.setBackground(
+                Color.WHITE
         );
 
-        panel.setBorder(
+        panelTabla.setBorder(
                 new EmptyBorder(
-                        18,
                         20,
-                        18,
+                        20,
+                        20,
                         20
                 )
         );
 
-        panel.setPreferredSize(
-                new Dimension(
-                        170,
-                        95
-                )
+        panelTabla.add(
+                scroll,
+                BorderLayout.CENTER
         );
 
-        JLabel lblNumero
-                = new JLabel(numero);
+        // ==========================================
+        // AGREGAR
+        // ==========================================
+        JPanel panelSuperior
+                = new JPanel(
+                        new BorderLayout()
+                );
 
-        lblNumero.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        28
-                )
+        panelSuperior.setBackground(
+                Color.WHITE
         );
 
-        lblNumero.setForeground(
-                MORADO
+        panelSuperior.add(
+                panelTabs,
+                BorderLayout.WEST
         );
 
-        JLabel lblTexto
-                = new JLabel(texto);
-
-        lblTexto.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.PLAIN,
-                        13
-                )
+        panelCentro.add(
+                panelSuperior,
+                BorderLayout.NORTH
         );
 
-        lblTexto.setForeground(
-                Color.DARK_GRAY
+        panelCentro.add(
+                panelTabla,
+                BorderLayout.CENTER
         );
-
-        panel.add(lblNumero);
-        panel.add(Box.createRigidArea(
-                new Dimension(0, 6)
-        ));
-        panel.add(lblTexto);
-
-        return panel;
+add(
+        panelCentro,
+        BorderLayout.CENTER
+);
     }
 
-    private JButton crearMenu(
-            String texto
+// ==========================================
+// TABS MODERNAS
+// ==========================================
+    private JButton crearTab(
+            String texto,
+            boolean activo
     ) {
 
         JButton btn
                 = new JButton(texto);
 
-        btn.setMaximumSize(
-                new Dimension(
-                        250,
-                        52
-                )
-        );
-
-        btn.setPreferredSize(
-                new Dimension(
-                        230,
-                        52
-                )
-        );
-
-        btn.setBackground(
-                AZUL_OSCURO
-        );
-
-        btn.setForeground(
-                Color.WHITE
-        );
-
-        btn.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        20
-                )
-        );
-
-        btn.setBorder(
-                new EmptyBorder(
-                        8,
-                        8,
-                        8,
-                        8
-                )
-        );
-
         btn.setFocusPainted(false);
-
         btn.setBorderPainted(false);
-
-        btn.setHorizontalAlignment(
-                SwingConstants.LEFT
-        );
 
         btn.setCursor(
                 new Cursor(
@@ -1035,185 +490,248 @@ private void configurarVentana() {
                 )
         );
 
-        // HOVER
-        btn.addMouseListener(
-                new java.awt.event.MouseAdapter() {
-
-            @Override
-            public void mouseEntered(
-                    java.awt.event.MouseEvent evt
-            ) {
-
-                btn.setBackground(
-                        new Color(
-                                80,
-                                95,
-                                150
-                        )
-                );
-            }
-
-            @Override
-            public void mouseExited(
-                    java.awt.event.MouseEvent evt
-            ) {
-
-                btn.setBackground(
-                        AZUL_OSCURO
-                );
-            }
-        }
+        btn.setFont(
+                new Font(
+                        "Segoe UI",
+                        Font.BOLD,
+                        14
+                )
         );
+
+        btn.setPreferredSize(
+                new Dimension(
+                        155,
+                        44
+                )
+        );
+        btn.setBorder(
+                new EmptyBorder(
+                        0,
+                        18,
+                        0,
+                        18
+                )
+        );
+        // Estado inicial
+        if (activo) {
+
+            btn.setBackground(
+                    MORADO
+            );
+
+            btn.setForeground(
+                    Color.WHITE
+            );
+
+        } else {
+
+            btn.setBackground(
+                    AZUL_OSCURO
+            );
+
+            btn.setForeground(
+                    Color.WHITE
+            );
+        }
+
+        // Evento CLICK
+        btn.addActionListener(e -> {
+
+            Container parent
+                    = btn.getParent();
+
+            for (Component c
+                    : parent.getComponents()) {
+
+                if (c instanceof JButton boton) {
+
+                    boton.setBackground(
+                            AZUL_OSCURO
+                    );
+
+                    boton.setForeground(
+                            Color.WHITE
+                    );
+                }
+            }
+
+            btn.setBackground(
+                    MORADO
+            );
+
+            btn.setForeground(
+                    Color.WHITE
+            );
+        });
 
         return btn;
     }
+// ==========================================
+// CARDS CON ICONOS
+// ==========================================
 
-    class ButtonRenderer
-            extends JButton
-            implements TableCellRenderer {
 
-        public ButtonRenderer() {
+// ==========================================
+// COLORES ESTADOS
+// ==========================================
+class BaseRenderer extends DefaultTableCellRenderer {
 
-            setText("Ver detalles");
+    @Override
+    public Component getTableCellRendererComponent(
+            JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int column
+    ) {
 
-            setFocusPainted(false);
+        JLabel c = (JLabel) super.getTableCellRendererComponent(
+                table, value, isSelected, hasFocus, row, column
+        );
 
-            setBorderPainted(false);
+        c.setOpaque(true);
 
-            setBackground(
-                    new Color(
-                            229,
-                            220,
-                            206
-                    )
+        c.setBackground(Color.WHITE);
+
+        // BORDE SOLO UNA VEZ (NO DOBLE 2px por celda)
+        c.setBorder(null);
+        return c;
+    }
+}
+// ==========================================
+// BOTÓN TABLA
+// ==========================================
+class ButtonRenderer extends JButton implements TableCellRenderer {
+
+    public ButtonRenderer() {
+        setText("Ver detalles");
+        setFocusPainted(false);
+        setBorderPainted(false);
+        setContentAreaFilled(true);
+
+        setBackground(CREMA);
+        setForeground(AZUL_OSCURO);
+        setFont(new Font("Segoe UI", Font.BOLD, 12));
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(
+            JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int column
+    ) {
+        return this;
+    }
+}
+// ==========================================
+// BUTTON EDITOR
+// ==========================================
+    class ButtonEditor
+            extends DefaultCellEditor {
+
+        private JButton button;
+
+        public ButtonEditor(
+                JCheckBox checkBox
+        ) {
+
+            super(checkBox);
+
+            button = new JButton(
+                    "Ver detalles"
             );
 
-            setFont(
-                    new Font(
-                            "Segoe UI",
-                            Font.BOLD,
-                            12
-                    )
+            button.setBackground(
+                    CREMA
             );
 
-            setCursor(
-                    new Cursor(
-                            Cursor.HAND_CURSOR
-                    )
+            button.setForeground(
+                    AZUL_OSCURO
             );
+
+            button.addActionListener(e -> {
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Abrir detalles de postulación"
+                );
+
+                fireEditingStopped();
+            });
         }
 
         @Override
-        public Component getTableCellRendererComponent(
+        public Component getTableCellEditorComponent(
                 JTable table,
                 Object value,
                 boolean isSelected,
-                boolean hasFocus,
                 int row,
                 int column
         ) {
 
-            return this;
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+
+            return "Ver detalles";
         }
     }
-       
-    class ButtonEditor
-                extends DefaultCellEditor {
 
-            private JButton button;
+// ==========================================
+// PANEL REDONDEADO
+// ==========================================
+    class RoundedPanel
+            extends JPanel {
 
-            public ButtonEditor(
-                    JCheckBox checkBox
-            ) {
+        private int radius;
 
-                super(checkBox);
+        public RoundedPanel(
+                int radius
+        ) {
 
-                button = new JButton(
-                        "Ver detalles"
-                );
+            this.radius = radius;
 
-                button.setFocusPainted(false);
-
-                button.setBackground(
-                        new Color(
-                                229,
-                                220,
-                                206
-                        )
-                );
-
-                button.addActionListener(e -> {
-
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Abrir detalles de postulación"
-                    );
-
-                    fireEditingStopped();
-                });
-            }
-
-            @Override
-            public Component getTableCellEditorComponent(
-                    JTable table,
-                    Object value,
-                    boolean isSelected,
-                    int row,
-                    int column
-            ) {
-
-                return button;
-            }
-
-            @Override
-            public Object getCellEditorValue() {
-
-                return "Ver detalles";
-            }
+            setOpaque(
+                    false
+            );
         }
 
-    class RoundedPanel extends JPanel {
+        @Override
+        protected void paintComponent(
+                Graphics g
+        ) {
 
-            private int radius;
+            Graphics2D g2
+                    = (Graphics2D) g.create();
 
-            public RoundedPanel(
-                    int radius
-            ) {
+            g2.setRenderingHint(
+                    RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON
+            );
 
-                this.radius = radius;
+            g2.setColor(
+                    getBackground()
+            );
 
-                setOpaque(false);
-            }
+            g2.fillRoundRect(
+                    0,
+                    0,
+                    getWidth(),
+                    getHeight(),
+                    radius,
+                    radius
+            );
 
-            @Override
-            protected void paintComponent(
-                    Graphics g
-            ) {
+            g2.dispose();
 
-                Graphics2D g2
-                        = (Graphics2D) g.create();
-
-                g2.setRenderingHint(
-                        RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON
-                );
-
-                g2.setColor(
-                        getBackground()
-                );
-
-                g2.fillRoundRect(
-                        0,
-                        0,
-                        getWidth(),
-                        getHeight(),
-                        radius,
-                        radius
-                );
-
-                g2.dispose();
-
-                super.paintComponent(g);
-            }
+            super.paintComponent(g);
         }
     }
+
+}
