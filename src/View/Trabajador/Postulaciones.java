@@ -2,13 +2,17 @@
 package View.Trabajador;
 
 
+import Config.ConexionBD;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.DefaultCellEditor;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 public class Postulaciones extends JPanel {
 
     // ==========================================
@@ -22,14 +26,13 @@ public class Postulaciones extends JPanel {
 
     private final Color CREMA
             = new Color(212, 205, 197);
-
-    private final Color FONDO
-            = new Color(245, 245, 245);
-
-  
+private JTable tabla;
+private DefaultTableModel modelo;
+private JLabel lblTotal,lblRevision,lblEntrevista,lblAceptada, lblRechazada;
     // ==========================================
     // CONSTRUCTOR
     // ==========================================
+
 public Postulaciones() {
 
     setLayout(
@@ -40,7 +43,283 @@ public Postulaciones() {
             Color.WHITE
     );
 
-    crearTablaPostulaciones();
+    add(
+        crearPanelContadores(),
+        BorderLayout.NORTH
+);
+
+crearTablaPostulaciones();
+
+    configurarTabla();
+
+    cargarTodo();
+}
+private void cargarTodo() {
+
+    cargarPostulaciones();
+
+    actualizarContadores();
+}
+private void actualizarContadores() {
+
+    int revision =
+            contarEstado("En revisión");
+
+    int entrevista =
+            contarEstado("Entrevista");
+
+    int aceptada =
+            contarEstado("Aceptada");
+
+    int rechazada =
+            contarEstado("Rechazada");
+
+    int total =
+            revision
+            + entrevista
+            + aceptada
+            + rechazada;
+
+    lblTotal.setText(
+            String.valueOf(total)
+    );
+
+    lblRevision.setText(
+            String.valueOf(revision)
+    );
+
+    lblEntrevista.setText(
+            String.valueOf(entrevista)
+    );
+
+    lblAceptada.setText(
+            String.valueOf(aceptada)
+    );
+
+    lblRechazada.setText(
+            String.valueOf(rechazada)
+    );
+}
+private void configurarTabla() {
+
+    modelo = new DefaultTableModel(
+            new String[]{
+                "#",
+                "Vacante",
+                "Empresa",
+                "Fecha",
+                "Estado",
+                "Acciones"
+            },
+            0
+    ) {
+
+        @Override
+        public boolean isCellEditable(
+                int row,
+                int column
+        ) {
+
+            return false;
+        }
+    };
+
+    tabla.setModel(modelo);
+
+    tabla.getTableHeader()
+            .setReorderingAllowed(false);
+
+    tabla.setRowSelectionAllowed(true);
+
+    tabla.setColumnSelectionAllowed(false);
+
+    tabla.setFocusable(false);
+}
+private void cargarPostulaciones() {
+
+    modelo.setRowCount(0);
+
+    String sql =
+            "SELECT * "
+            + "FROM postulaciones";
+
+    try (
+            Connection con =
+                    ConexionBD
+                            .getInstancia()
+                            .getConnection();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ResultSet rs =
+                    ps.executeQuery()
+    ) {
+
+        while (rs.next()) {
+
+            modelo.addRow(
+                    new Object[]{
+                        rs.getInt(
+                                "id_postulacion"
+                        ),
+
+                        rs.getString(
+                                "vacante"
+                        ),
+
+                        rs.getString(
+                                "empresa"
+                        ),
+
+                        rs.getDate(
+                                "fecha_postulacion"
+                        ),
+
+                        rs.getString(
+                                "estado"
+                        ),
+
+                        "Ver detalles"
+                    }
+            );
+        }
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
+}
+private JPanel crearPanelContadores() {
+
+    JPanel panelCards = new JPanel(
+            new GridLayout(1, 5, 20, 0)
+    );
+
+    panelCards.setBackground(Color.WHITE);
+
+    panelCards.setBorder(
+            new EmptyBorder(15, 28, 15, 28)
+    );
+
+    panelCards.add(
+            crearCard("0", "Total postulaciones", 0)
+    );
+
+    panelCards.add(
+            crearCard("0", "En revisión", 1)
+    );
+
+    panelCards.add(
+            crearCard("0", "Entrevista", 2)
+    );
+
+    panelCards.add(
+            crearCard("0", "Aceptada", 3)
+    );
+
+    panelCards.add(
+            crearCard("0", "Rechazada", 4)
+    );
+
+    return panelCards;
+}
+private JPanel crearCard(
+        String numero,
+        String texto,
+        int tipo
+) {
+
+    RoundedPanel panel =
+            new RoundedPanel(25);
+
+    panel.setLayout(
+            new BoxLayout(
+                    panel,
+                    BoxLayout.Y_AXIS
+            )
+    );
+
+    panel.setBackground(CREMA);
+
+    panel.setBorder(
+            new EmptyBorder(
+                    18,
+                    20,
+                    18,
+                    20
+            )
+    );
+
+    JLabel lblNumero =
+            new JLabel(numero);
+
+    lblNumero.setFont(
+            new Font(
+                    "Segoe UI",
+                    Font.BOLD,
+                    28
+            )
+    );
+
+    lblNumero.setForeground(MORADO);
+
+    JLabel lblTexto =
+            new JLabel(texto);
+
+    switch (tipo) {
+
+        case 0 -> lblTotal = lblNumero;
+        case 1 -> lblRevision = lblNumero;
+        case 2 -> lblEntrevista = lblNumero;
+        case 3 -> lblAceptada = lblNumero;
+        case 4 -> lblRechazada = lblNumero;
+    }
+
+    panel.add(lblNumero);
+    panel.add(Box.createVerticalStrut(6));
+    panel.add(lblTexto);
+
+    return panel;
+}
+private int contarEstado(
+        String estado
+) {
+
+    String sql =
+            "SELECT COUNT(*) "
+            + "FROM postulaciones "
+            + "WHERE estado = ?";
+
+    try (
+            Connection con =
+                    ConexionBD
+                            .getInstancia()
+                            .getConnection();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql)
+    ) {
+
+        ps.setString(
+                1,
+                estado
+        );
+
+        ResultSet rs =
+                ps.executeQuery();
+
+        if (rs.next()) {
+
+            return rs.getInt(1);
+        }
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
+
+    return 0;
 }
 
     private void crearTablaPostulaciones() {
@@ -120,63 +399,32 @@ public Postulaciones() {
         // ==========================================
         // DATOS TABLA
         // ==========================================
-        String[] columnas = {
-            "#",
-            "Vacante",
-            "Empresa",
-            "Fecha de postulación",
-            "Estado",
-            "Acciones"
-        };
+String[] columnas = {
+    "#",
+    "Vacante",
+    "Empresa",
+    "Fecha de postulación",
+    "Estado",
+    "Acciones"
+};
 
-        Object[][] datos = {
-            {
-                1,
-                "Desarrollador Java Backend",
-                "TechCore Solutions",
-                "12 may. 2025",
-                "En revisión",
-                "Ver detalles"
-            },
-            {
-                2,
-                "Analista de Datos",
-                "Data Insights",
-                "08 may. 2025",
-                "Entrevista",
-                "Ver detalles"
-            },
-            {
-                3,
-                "Diseñador UI/UX",
-                "Creative Web",
-                "02 may. 2025",
-                "Rechazada",
-                "Ver detalles"
-            },
-            {
-                4,
-                "Ingeniero DevOps",
-                "CloudNet",
-                "28 abr. 2025",
-                "Aceptada",
-                "Ver detalles"
-            },
-            {
-                5,
-                "Desarrollador Full Stack",
-                "Innovatech",
-                "20 abr. 2025",
-                "En revisión",
-                "Ver detalles"
-            }
-        };
+modelo = new DefaultTableModel(
+        columnas,
+        0
+) {
 
-        JTable tabla
-                = new JTable(
-                        datos,
-                        columnas
-                );
+    @Override
+    public boolean isCellEditable(
+            int row,
+            int column
+    ) {
+
+        // SOLO BOTON ACCIONES
+        return column == 5;
+    }
+};
+
+tabla = new JTable(modelo);
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         tabla.setShowGrid(true);
 tabla.setGridColor(AZUL_OSCURO);
@@ -470,6 +718,8 @@ add(
 );
     }
 
+    
+
 // ==========================================
 // TABS MODERNAS
 // ==========================================
@@ -566,10 +816,6 @@ add(
 
         return btn;
     }
-// ==========================================
-// CARDS CON ICONOS
-// ==========================================
-
 
 // ==========================================
 // COLORES ESTADOS

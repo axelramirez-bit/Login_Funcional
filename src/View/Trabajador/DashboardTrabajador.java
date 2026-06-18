@@ -264,7 +264,7 @@ private JPanel crearSidebar() {
     sidebar.add(
             crearMenuConIcono(
                     "Mi Perfil",
-                    "/Imagen/icon_usuario.png"
+                    "/Imagen/icon_perfil.png"
             )
     );
 
@@ -336,7 +336,7 @@ private JPanel crearSidebar() {
     ImageIcon userIcon =
             new ImageIcon(
                     getClass().getResource(
-                            "/Imagen/icon_usuario.png"
+                            "/Imagen/icon_techcorp.png"
                     )
             );
 
@@ -605,15 +605,15 @@ panelBusqueda.add(
     ImageIcon iconCampana =
             new ImageIcon(
                     getClass().getResource(
-                            "/Imagen/icon_notificacion.png"
+                                "/Imagen/icon_notificacionceleste.png"
                     )
             );
 
     Image imgCampana =
             iconCampana.getImage()
                     .getScaledInstance(
-                            24,
-                            24,
+                            28,
+                            28,
                             Image.SCALE_SMOOTH
                     );
 
@@ -621,6 +621,11 @@ panelBusqueda.add(
             new ImageIcon(
                     imgCampana
             )
+    );
+                    lblCampana.setBorder(
+                BorderFactory.createEmptyBorder(
+                        7, 0, 0, 0
+                )
     );
 
     // ==========================================
@@ -632,7 +637,7 @@ panelBusqueda.add(
     ImageIcon iconPerfil =
             new ImageIcon(
                     getClass().getResource(
-                            "/Imagen/icon_usuario.png"
+                                "/Imagen/icon_perfilceleste.png"
                     )
             );
 
@@ -828,7 +833,7 @@ if (location == null) {
                 cambiarEncabezado(
                         "Mi Perfil",
                         "Gestiona tu información personal",
-                        "/Imagen/icon_usuario.png"
+                        "/Imagen/icon_perfil.png"
                 );
                 break;
 

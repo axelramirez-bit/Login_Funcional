@@ -12,16 +12,25 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Administrador.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Vacante.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Postulacion.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Trabajador.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Usuario.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Entrevista.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Empresa/DashboardEmpresa.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Reporte.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Admin/DashboardAdmin.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Notificacion.java</file>
             <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/DashboardTrabajador.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/MiPerfil.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Entrevistas.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Mensajes.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Configuracion.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Vacantes.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Notificaciones.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/PerfilTrabajador.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Documento.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Habilidad.java</file>
             <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/main/Main.java</file>
             <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Postulaciones.java</file>
-            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Trabajador/Inicio.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Mensaje.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/View/Login/LoginFrame.java</file>
+            <file>file:/C:/Users/Axel%20Stanley/Desktop/Expotec/Workbridge/Workbridge/src/Model/Empresa.java</file>
         </group>
     </open-files>
 </project-private>
