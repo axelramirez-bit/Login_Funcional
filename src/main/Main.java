@@ -1,22 +1,19 @@
 
 package main;
 
-import View.Login.LoginFrame;
+
+import View.Trabajador.DashboardTrabajador;
+import javax.swing.SwingUtilities;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        LoginFrame login
-                = new LoginFrame();
+        SwingUtilities.invokeLater(() -> {
 
-        login.pack();
-
-        login.setLocationRelativeTo(null);
-
-        login.setVisible(true);
-        
-
+            new DashboardTrabajador()
+                    .setVisible(true);
+        });
       
     }
 

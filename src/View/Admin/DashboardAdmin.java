@@ -44,6 +44,8 @@ public class DashboardAdmin extends JFrame {
 
         setSize(1450, 850);
 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         setLocationRelativeTo(null);
 
         setDefaultCloseOperation(
@@ -817,7 +819,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Dashboard",
-                            "Bienvenido al Dashboard",
+                            "Visualiza un resumen general de la actividad y el estado de la plataforma.",
                             "/Imagen/icon_dashboard.png"
                     );
                     break;
@@ -830,7 +832,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Reportes",
-                            "Gestiona tu información personal",
+                            "Genera y consulta informes sobre usuarios, empresas y vacantes.",
                             "/Imagen/icon_reportes.png"
                     );
                     break;
@@ -843,7 +845,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Usuarios",
-                            "Explora oportunidades laborales",
+                            "Gestiona las cuentas y el acceso de los usuarios registrados",
                             "/Imagen/icon_profesionales.png"
                     );
                     break;
@@ -856,7 +858,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Empresas",
-                            "Consulta el estado de tus postulaciones",
+                            "Supervisa y administra las empresas que utilizan la plataforma.",
                             "/Imagen/icon_empresas.png"
                     );
                     break;
@@ -869,7 +871,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Vacantes",
-                            "Revisa entrevistas programadas",
+                            "Controla y monitorea las oportunidades laborales publicadas.",
                             "/Imagen/icon_vacantes.png"
                     );
                     break;
@@ -882,7 +884,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Comunicaciones",
-                            "Comunicación con usuaros",
+                            "Administra los mensajes y avisos entre los usuarios del sistema.",
                             "/Imagen/icon_comunicaciones.png"
                     );
                     break;
@@ -895,7 +897,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Estadisticas",
-                            "Mantente al día con novedades",
+                            "Analiza métricas e indicadores clave de la plataforma.",
                             "/Imagen/icon_estadisticas.png"
                     );
                     break;
@@ -908,7 +910,7 @@ public class DashboardAdmin extends JFrame {
 
                     cambiarEncabezado(
                             "Configuración",
-                            "Personaliza tu cuenta",
+                            "Personaliza las preferencias y la seguridad de tu cuenta.",
                             "/Imagen/icon_configuracion.png"
                     );
                     break;

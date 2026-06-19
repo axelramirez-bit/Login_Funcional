@@ -43,8 +43,10 @@ public class DashboardTrabajador extends JFrame {
         setTitle("Dashboard Trabajador");
 
         setSize(1450, 850);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         setLocationRelativeTo(null);
+
 
         setDefaultCloseOperation(
                 JFrame.EXIT_ON_CLOSE

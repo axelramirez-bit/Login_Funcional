@@ -44,6 +44,8 @@ public class DashboardEmpresa extends JFrame {
 
         setSize(1450, 850);
 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         setLocationRelativeTo(null);
 
         setDefaultCloseOperation(
@@ -808,7 +810,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Inicio",
-                            "Bienvenido al Dashboard",
+                            "Bienvenido a la Empresa",
                             "/Imagen/icon_inicio.png"
                     );
                     break;
@@ -821,7 +823,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Entrevistas",
-                            "Gestiona tu información personal",
+                            "Administra la información y presentación de tu organización.",
                             "/Imagen/icon_edificio.png"
                     );
                     break;
@@ -833,7 +835,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "MisVacantes",
-                            "Gestiona tu información personal",
+                            "Crea y gestiona las ofertas laborales de tu empresa.",
                             "/Imagen/icon_vacantes.png"
                     );
                     break;
@@ -845,7 +847,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Entrevistas",
-                            "Gestiona tu información personal",
+                            "Organiza y da seguimiento a los procesos de selección",
                             "/Imagen/icon_entrevistas.png"
                     );
                     break;
@@ -858,7 +860,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Comunicaciones",
-                            "Comunicación con usuaros",
+                            "Mantén contacto directo con los candidatos y administradores.",
                             "/Imagen/icon_comunicaciones.png"
                     );
 
@@ -870,7 +872,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Notificaciones",
-                            "Consulta el estado de tus postulaciones",
+                            "Recibe alertas sobre postulaciones, entrevistas y novedades.",
                             "/Imagen/icon_notificacion.png"
                     );
                     
@@ -884,7 +886,7 @@ public class DashboardEmpresa extends JFrame {
 
                     cambiarEncabezado(
                             "Configuración",
-                            "Personaliza tu cuenta",
+                            "Personaliza las preferencias y la seguridad de tu cuenta empresarial.",
                             "/Imagen/icon_configuracion.png"
                     );
                     break;
