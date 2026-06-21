@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class LoginFrame extends JFrame
+public class Login extends JFrame
         implements ActionListener {
 
     // ==========================
@@ -70,7 +70,7 @@ public class LoginFrame extends JFrame
     // ==========================
     // CONSTRUCTOR
     // ==========================
-    public LoginFrame() {
+    public Login() {
 
         controller =
                 new LoginController(this);
@@ -859,10 +859,6 @@ panelPassword.add(
         txtPassword,
         BorderLayout.CENTER
 );
-panelPassword.add(
-        txtPassword,
-        BorderLayout.CENTER
-);
 
 panelPassword.add(
         iconVista,
@@ -983,6 +979,10 @@ btnIngresar.setIconTextGap(
 );
 
 btnIngresar.addActionListener(this);
+btnIngresar.setOpaque(true);
+btnIngresar.setContentAreaFilled(true);
+btnIngresar.setBorderPainted(false);
+btnIngresar.setFocusPainted(false);
 
 // ==========================
 // TEXTO O CENTRADA
@@ -1494,7 +1494,7 @@ public static void main(
 
     SwingUtilities.invokeLater(() -> {
 
-        new LoginFrame()
+        new Login()
                 .setVisible(true);
     });
 }

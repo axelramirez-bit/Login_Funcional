@@ -18,8 +18,6 @@ public class Inicio extends JFrame {
     private final Color TEXTO_GRIS
             = new Color(110, 110, 110);
 
-    private final Color BORDE
-            = new Color(225, 225, 225);
 
     // ==========================
     // SCALING
@@ -309,9 +307,7 @@ public class Inicio extends JFrame {
         // ==========================
         // HERO SECTION
         // ==========================
-        JPanel heroPanel = new JPanel(
-
-        );
+        JPanel heroPanel = new JPanel();
         heroPanel.setLayout(
                 new GridBagLayout()
         );
@@ -332,8 +328,8 @@ public class Inicio extends JFrame {
         // ==========================
         JPanel leftHero = new JPanel();
 
-        leftHero.setOpaque(false);
-
+        leftHero.setOpaque(true);
+leftHero.setBackground(AZUL_CLARO);
         leftHero.setLayout(
                 new BoxLayout(
                         leftHero,
@@ -345,6 +341,7 @@ public class Inicio extends JFrame {
                 "<html>"
                 + "<span style='font-size:52px;'>"
                 + "<b>"
+                +"<br>"
                 + "<font color='#0E4C92'>Conectamos</font><br>"
                 + "<font color='#A6C6D0'>talento.</font><br>"
                 + "<font color='#0E4C92'>Generamos</font><br>"
@@ -357,9 +354,9 @@ public class Inicio extends JFrame {
         JLabel descripcion
                 = new JLabel(
                         "<html>"
-                        + "La plataforma profesional de Guatemala donde "
-                        + "empresas líderes y el mejor talento del país "
-                        + "se encuentran, conectan y crecen juntos."
+                        + "La plataforma profesional de Guatemala donde <br> "
+                        + "empresas líderes y el mejor talento del país <br>"
+                        + "se encuentran, conectan y crecen juntos.<br>"
                         + "</html>"
                 );
 
@@ -374,23 +371,19 @@ public class Inicio extends JFrame {
                         sw(16)
                 )
         );
-
-        btnBuscar
-                = new JButton(
-                        "Buscar empleos"
-                );
+        btnBuscar = new JButton("Buscar empleos");
 
         btnBuscar.setPreferredSize(
-                new Dimension(sw(220), sh(52))
-        );
-
-        btnBuscar.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        sw(15)
+                new Dimension(
+                        sw(220),
+                        sh(52)
                 )
         );
+
+        btnBuscar.setBackground(Color.WHITE);
+        btnBuscar.setForeground(AZUL_OSCURO);
+
+        btnBuscar.setFocusPainted(false);
 
         btnBuscar.setBorder(
                 BorderFactory.createLineBorder(
@@ -399,129 +392,101 @@ public class Inicio extends JFrame {
                 )
         );
 
-        btnBuscar.setBackground(
-                Color.WHITE
+        btnBuscar.setFont(
+                new Font(
+                        "Segoe UI",
+                        Font.PLAIN,
+                        sw(14)
+                )
+        );
+        BorderFactory.createLineBorder(
+                AZUL_OSCURO,
+                2
         );
 
-        btnBuscar.setForeground(
-                AZUL_OSCURO
+        btnBuscar.setFont(
+                new Font(
+                        "Segoe UI",
+                        Font.PLAIN,
+                        sw(14)
+                )
         );
+        btnPublicar = new JButton("Publicar vacantes");
 
-        btnBuscar.setFocusPainted(false);
-
-        btnBuscar.setBorder(
-                BorderFactory.createLineBorder(
-                        AZUL_OSCURO
+        btnPublicar.setPreferredSize(
+                new Dimension(
+                        sw(220),
+                        sh(52)
                 )
         );
 
-        btnPublicar
-                = new JButton(
-                        "Publicar vacantes"
-                );
+        btnPublicar.setBackground(AZUL_OSCURO);
+        btnPublicar.setForeground(Color.WHITE);
 
-        btnPublicar.setPreferredSize(
-                new Dimension(sw(220), sh(52))
-        );
+        btnPublicar.setOpaque(true);
+        btnPublicar.setContentAreaFilled(true);
+
+        btnPublicar.setFocusPainted(false);
+        btnPublicar.setBorderPainted(false);
 
         btnPublicar.setFont(
                 new Font(
                         "Segoe UI",
-                        Font.BOLD,
-                        sw(15)
+                        Font.PLAIN,
+                        sw(14)
+                )
+        );
+        JPanel panelBotones = new JPanel(
+                new FlowLayout(
+                        FlowLayout.LEFT,
+                        10,
+                        0
                 )
         );
 
-        btnPublicar.setText(
-                "Publicar vacantes"
-        );
-
-        btnPublicar.setBackground(
-                AZUL_OSCURO
-        );
-        btnPublicar.setOpaque(true);
-        btnPublicar.setContentAreaFilled(true);
-        btnPublicar.setForeground(
-                Color.WHITE
-        );
-
-        btnPublicar.setFocusPainted(false);
-
-        JPanel panelBotones
-                = new JPanel(
-                        new FlowLayout(
-                                FlowLayout.LEFT
-                        )
-                );
 
         panelBotones.setOpaque(false);
 
         panelBotones.add(btnBuscar);
         panelBotones.add(btnPublicar);
-
+  
+leftHero.setOpaque(true);
+leftHero.setLayout(
+    new BoxLayout(
+        leftHero,
+        BoxLayout.Y_AXIS
+    )
+);
         leftHero.add(titulo);
         leftHero.add(
                 Box.createVerticalStrut(
                         sh(25)
                 )
         );
-        
+
         leftHero.add(descripcion);
         leftHero.add(
                 Box.createVerticalStrut(
                         sh(30)
                 )
         );
-        
-        leftHero.add(panelBotones);
-        leftHero.add(
-                Box.createVerticalStrut(
-                        sh(40)
-                )
-        );
-        JPanel panelStats
-        = new JPanel(
-                new FlowLayout(
-                        FlowLayout.LEFT,
-                        sw(40),
-                        0
-                )
-        );
 
-panelStats.setOpaque(false);
+leftHero.add(panelBotones);
+leftHero.add(Box.createVerticalStrut(sh(20)));
 
-panelStats.setBorder(
-        new EmptyBorder(
-                sh(15),
-                sw(100),
-                sh(25),
-                0
-        )
-);
-
-panelStats.add(
-        crearStat(
-                "+8,400",
-                "Profesionales activos"
-        )
-);
-
-panelStats.add(
-        crearStat(
-                "+1,200",
-                "Empresas registradas"
-        )
-);
-
-panelStats.add(
-        crearStat(
-                "+3,500",
-                "Vacantes publicadas"
-        )
-);
-
-
-        // ==========================
+        titulo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        descripcion.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panelBotones.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JPanel panelStats = new JPanel(new FlowLayout(FlowLayout.LEFT, sw(40), 0));
+        leftHero.add(panelStats);
+        panelStats.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panelStats.setOpaque(false);
+        panelStats.setBorder(new EmptyBorder(sh(15), 0, sh(25), 0));
+        panelStats.add(crearStat("+8,400", "Profesionales activos"));
+        panelStats.add(crearStat("+1,200", "Empresas registradas"));
+        panelStats.add(crearStat("+3,500", "Vacantes publicadas"));
+   
+// ==========================
 // PANEL DERECHO
 // ==========================
         RoundedPanel cardPerfil
@@ -547,18 +512,37 @@ panelStats.add(
                 )
         );
 
-        cardPerfil.setLayout(
-                new BoxLayout(
-                        cardPerfil,
-                        BoxLayout.Y_AXIS
-                )
-        );
+cardPerfil.setLayout(
+    new BoxLayout(
+        cardPerfil,
+        BoxLayout.Y_AXIS
+    )
+);
+
         cardPerfil.setPreferredSize(
                 new Dimension(
-                        sw(550),
-                        sh(280)
+                        sw(500),
+                        sh(320)
                 )
         );
+        
+        
+        
+        
+    JPanel contenido = new JPanel();
+
+contenido.setOpaque(false);
+
+contenido.setLayout(
+    new BoxLayout(
+        contenido,
+        BoxLayout.Y_AXIS
+    )
+);    
+        
+        
+        
+        
 // ==========================
 // HEADER PERFIL
 // ==========================
@@ -571,58 +555,19 @@ panelStats.add(
 
         headerPerfil.setOpaque(false);
 
-        RoundedPanel avatar
-                = new RoundedPanel(
-                        sw(60)
-                );
+        JLabel avatar = new JLabel(
+    cargarIcono(
+        "/Imagen/icon_usuarioperfil.png",
+        sw(70),
+        sh(70)
+    )
+);
 
-        avatar.setPreferredSize(
-                new Dimension(
-                        sw(70),
-                        sh(70)
-                )
-        );
 
-        avatar.setMaximumSize(
-                new Dimension(
-                        sw(70),
-                        sh(70)
-                )
-        );
+        JPanel infoPerfil = new JPanel();
 
-        avatar.setBackground(
-                AZUL_OSCURO
-        );
-
-        avatar.setLayout(
-                new GridBagLayout()
-        );
-
-        JLabel lblCJ
-                = new JLabel(
-                        cargarIcono(
-                                "/Imagen/icon_usuario.png",
-                                sw(32),
-                                sh(32)
-                        )
-                );
-        lblCJ.setForeground(
-                Color.WHITE
-        );
-
-        lblCJ.setFont(
-                new Font(
-                        "Segoe UI",
-                        Font.BOLD,
-                        sw(28)
-                )
-        );
-
-        avatar.add(lblCJ);
-
-        JPanel infoPerfil
-                = new JPanel();
-
+        
+        
         infoPerfil.setOpaque(false);
 
         infoPerfil.setLayout(
@@ -676,16 +621,21 @@ panelStats.add(
         GridBagConstraints gbc
                 = new GridBagConstraints();
 
-        gbc.gridx = 0;
-        gbc.weightx = 0.48;
-        gbc.fill = GridBagConstraints.HORIZONTAL;;
+gbc.gridx = 0;
+gbc.gridy = 0;
+gbc.weightx = 0.45;
+gbc.weighty = 1.0;
+gbc.fill = GridBagConstraints.BOTH;
+gbc.anchor = GridBagConstraints.CENTER;
 
-        heroPanel.add(leftHero, gbc);
+heroPanel.add(leftHero, gbc);
+gbc.gridx = 1;
+gbc.weightx = 0.55;
+gbc.weighty = 1.0;
+gbc.fill = GridBagConstraints.NONE;
+gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.gridx = 1;
-        gbc.weightx = 0.52;
-
-        heroPanel.add(cardPerfil, gbc);
+heroPanel.add(cardPerfil, gbc);
 // ==========================
 // TAGS
 // ==========================
@@ -774,16 +724,11 @@ panelStats.add(
                 )
         );
 
-        actividad1.setPreferredSize(
-                new Dimension(
-                        sw(380),
-                        sh(45)
-                )
-        );
+
 
         actividad1.setMaximumSize(
                 new Dimension(
-                        sw(380),
+                        sw(150),
                         sh(45)
                 )
         );
@@ -813,16 +758,11 @@ panelStats.add(
                 )
         );
 
-        actividad2.setPreferredSize(
-                new Dimension(
-                        sw(380),
-                        sh(45)
-                )
-        );
+        
 
         actividad2.setMaximumSize(
                 new Dimension(
-                        sw(380),
+                        sw(150),
                         sh(45)
                 )
         );
@@ -849,7 +789,17 @@ panelStats.add(
         cardPerfil.add(
                 Box.createVerticalStrut(sh(8))
         );
-        cardPerfil.add(lblActividad);
+        JPanel panelTituloActividad = new JPanel(
+                new FlowLayout(
+                        FlowLayout.LEFT
+                )
+        );
+
+        panelTituloActividad.setOpaque(false);
+
+        panelTituloActividad.add(lblActividad);
+
+        cardPerfil.add(panelTituloActividad);
         cardPerfil.add(
                 Box.createVerticalStrut(
                         sh(10)
@@ -862,8 +812,6 @@ panelStats.add(
                 )
         );
         cardPerfil.add(actividad2);
-    
-
 
 // ==========================
 // AGREGAR HERO
@@ -872,23 +820,18 @@ panelStats.add(
                 heroPanel,
                 BorderLayout.CENTER
         );
-leftHero.add(panelStats);
-leftHero.add(panelBotones);
 
-leftHero.add(
-    Box.createVerticalStrut(
-        sh(40)
-    )
-);
-
-leftHero.add(panelStats);
-  
         agregarHover(
                 btnIngresar,
                 Color.WHITE,
                 new Color(235, 235, 235)
         );
+        btnIngresar.addActionListener(e -> {
 
+    new Login().setVisible(true); // abre inicio de sesión
+
+    this.dispose(); // cierra la ventana actual
+});
         agregarHover(
                 btnRegistrarse,
                 AZUL_OSCURO,
@@ -906,6 +849,7 @@ leftHero.add(panelStats);
                 AZUL_OSCURO,
                 new Color(25, 90, 165)
         );
+
     }
 
     private JPanel crearStat(
@@ -946,7 +890,8 @@ leftHero.add(panelStats);
         lblTexto.setForeground(
                 TEXTO_GRIS
         );
-
+        lblNumero.setAlignmentX(Component.LEFT_ALIGNMENT);
+        lblTexto.setAlignmentX(Component.LEFT_ALIGNMENT);
         panel.add(lblNumero);
         panel.add(lblTexto);
 
@@ -968,45 +913,46 @@ leftHero.add(panelStats);
             setOpaque(false);
         }
 
-@Override
-protected void paintComponent(Graphics g) {
+        @Override
+        protected void paintComponent(Graphics g) {
 
-    Graphics2D g2 = (Graphics2D) g.create();
+            Graphics2D g2 = (Graphics2D) g.create();
 
-    g2.setRenderingHint(
-            RenderingHints.KEY_ANTIALIASING,
-            RenderingHints.VALUE_ANTIALIAS_ON
-    );
+            g2.setRenderingHint(
+                    RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON
+            );
 
-    g2.setColor(
-            new Color(0,0,0,20)
-    );
+            g2.setColor(
+                    new Color(0, 0, 0, 20)
+            );
 
-    g2.fillRoundRect(
-            4,
-            4,
-            getWidth()-4,
-            getHeight()-4,
-            radius,
-            radius
-    );
+            g2.fillRoundRect(
+                    4,
+                    4,
+                    getWidth() - 4,
+                    getHeight() - 4,
+                    radius,
+                    radius
+            );
 
-    g2.setColor(
-            getBackground()
-    );
+            g2.setColor(
+                    getBackground()
+            );
 
-    g2.fillRoundRect(
-            0,
-            0,
-            getWidth()-4,
-            getHeight()-4,
-            radius,
-            radius
-    );
+            g2.fillRoundRect(
+                    0,
+                    0,
+                    getWidth() - 4,
+                    getHeight() - 4,
+                    radius,
+                    radius
+            );
 
-    g2.dispose();
-}
+            g2.dispose();
+        }
     }
+
     private void agregarHover(
             JButton boton,
             Color normal,
@@ -1039,11 +985,10 @@ protected void paintComponent(Graphics g) {
             }
         });
     }
-  
+
     // ==========================
 // MAIN
 // ==========================
-
     public static void main(
             String[] args
     ) {

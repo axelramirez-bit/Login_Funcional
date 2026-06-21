@@ -5,16 +5,16 @@ import Service.AuthService;
 import View.Admin.DashboardAdmin;
 import View.Empresa.DashboardEmpresa;
 import View.Trabajador.DashboardTrabajador;
-import View.Login.LoginFrame;
+import View.Login.Login;
 import javax.swing.JOptionPane;
 
 public class LoginController {
 
-    private LoginFrame view;
+    private Login view;
     private AuthService authService;
 
     public LoginController(
-            LoginFrame view
+            Login view
     ) {
 
         this.view = view;
